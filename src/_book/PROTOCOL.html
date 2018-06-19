@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="NODE.html" />
+    
     
     <link rel="prev" href="./" />
     
@@ -113,6 +115,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3" data-path="NODE.html">
+            
+                <a href="NODE.html">
+            
+                    
+                    Node API Implementation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="NODECONFIG.html">
+            
+                <a href="NODECONFIG.html">
+            
+                    
+                    Node Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -159,40 +187,39 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="requestresponse-protocol">Request/Response Protocol</h1>
-<p>Each language runtime implements a very simple request/response protocol to communicate with the node over supported IPC mechanisms. Instead of reimplementing the protocol, an implementation can delegate to the C API over FFI (or whatever existing API language is most suitable)</p>
-<h2 id="encoding">Encoding</h2>
+<p>Each language binding implements a very simple request/response protocol to communicate with the node over the IPC mechanisms the clients wants to support. </p>
+<p>An implementation can alternatively delegate to the C API over FFI, or whichever existing API binding is most suitable.</p>
+<h2 id="protocol-layout">Protocol layout</h2>
 <p>The protocol is a simple length-prefixed binary format with a header message for both the request and the response to indicate what type of request is being transmitted. The request type must be present in the response header as well, in anticipation of future callback/async features.</p>
 <h3 id="request">Request</h3>
 <pre><code>[4 bytes preamble]
 [32-bit big-endian length]
-[Protobuf encoded request header message]
+[Protobuf encoded request header]
 [32-bit big-endian length]
-[Protobuf encoded request message]
+[Protobuf encoded request]
 </code></pre><p>The preamble has the following structure:</p>
 <pre><code>Byte 1: &apos;N&apos;
-Byte 2: 0x01
+Byte 2: 0x00
 Byte 3: Major protocol version
 Byte 4: Minor protocol version
-</code></pre><p>The first two bytes serves as a magic header. If the message encoding changes
-in the future (say, moving from Protobuf to Cap&apos;N&apos;Proto), the second byte is bumped.</p>
+</code></pre><p>The first two bytes serves as a magic sequence. If the message encoding changes in the future (say, moving from Protobuf to Cap&apos;N&apos;Proto), the second byte is bumped.</p>
+<p>If a node doesn&apos;t support the requested encoding, it will respond with a preamble containing a different encoding byte. The client API should report this as an unsupported-encoding error in a language idiomatic way (e.g. throwing an exception)</p>
 <p>The version numbers adhere to this scheme:</p>
 <ol>
-<li>The major version is bumped if there is a breaking message definition change, such
-as renaming a message or making changes that Protobuf deems incompatible.</li>
-<li>This is bumped if a compatible change has been made. Message fields can usually
-be added and removed without breaking existing clients.</li>
+<li>The major version is bumped if there is a breaking message definition change, such as renaming a message or making changes that Protobuf deems incompatible [1]</li>
+<li>The minor version is bumped if a compatible change has been made [1]. Message fields can usually be added and removed without breaking existing clients.</li>
 </ol>
-<p>Please see <a href="https://developers.google.com/protocol-buffers/docs/proto3#updating" target="_blank">https://developers.google.com/protocol-buffers/docs/proto3#updating</a></p>
+<p>[1] Please see <a href="https://developers.google.com/protocol-buffers/docs/proto3#updating" target="_blank">https://developers.google.com/protocol-buffers/docs/proto3#updating</a></p>
 <h3 id="response">Response</h3>
 <pre><code>[4 bytes preamble]
 [32-bit big-endian length]
-[Protobuf encoded response header message]
+[Protobuf encoded response header]
 [32-bit big-endian length]
-[Protobuf encoded response message]
+[Protobuf encoded response]
 </code></pre><p>The preamble is the same as with the request, but with version information from
 the node.</p>
-<h2 id="protocol-buffers-encoding">Protocol Buffers encoding</h2>
-<p>The request header is defined by the Request message type, and the response header is defined by the Response message type. Please see the <a href="https://nanoapi.github.io/protobuf/index.html" target="_blank">protobuf specification</a> for more information.</p>
+<h2 id="protocol-buffers">Protocol Buffers</h2>
+<p>The request header is defined by the <code>Request</code> message type, and the response header is defined by the <code>Response</code> message type. Please see the <a href="https://nanoapi.github.io/protobuf/index.html" target="_blank">protobuf specification</a> for more information.</p>
 
                                 
                                 </section>
@@ -220,10 +247,14 @@ the node.</p>
 
             
                 
-                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Overview">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Overview">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="NODE.html" class="navigation navigation-next " aria-label="Next page: Node API Implementation">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -232,7 +263,7 @@ the node.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Message Protocol","level":"1.2","depth":1,"previous":{"title":"Overview","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PROTOCOL.md","mtime":"2018-06-19T07:28:17.211Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-19T07:49:50.377Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Message Protocol","level":"1.2","depth":1,"next":{"title":"Node API Implementation","level":"1.3","depth":1,"path":"NODE.md","ref":"NODE.md","articles":[]},"previous":{"title":"Overview","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PROTOCOL.md","mtime":"2018-07-01T22:18:20.893Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-01T23:56:10.752Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

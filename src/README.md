@@ -24,12 +24,13 @@ Protocol Buffers offers the following benefits:
 
 * Relatively easy to support new programming languages and platforms.
 * A single message definition enforces up-to-date documentation that's relevant to all language bindings.
+* Efficient on-wire binary representation.
 * A canonical JSON representation makes it easy to write stuff like REST servers in dynamic languages.
 
-Request can be sent over various transports, such as TCP, domain sockets, pipes and shared memory. Currently, TCP and domain sockets are supported by the node.
+Request can theorectically be sent over any number of transports, such as TCP, domain sockets, pipes and shared memory. Currently, TCP and domain sockets are supported by the node.
 
 ### Message Definitions
-The protobuffer definition is available at https://github.com/nanoapi/protobuf and is documented at https://nanoapi.github.io/protobuf/index.html
+The protobuffer definition is part of the node respository (see the protobuf directory) and is documented at https://nanoapi.github.io/protobuf/index.html
 
 ## Repository Structure
 
@@ -88,9 +89,15 @@ As for communicating with the node, a new language binding can either reimplemen
 
 ## C++ API
 
-The C++ API is a high-level wrapper around the C API. Example:
+The C++ API is a high-level wrapper around the C API.
 
 [C++ Example](https://github.com/nanoapi/api-c/blob/master/examples/example-client.cpp)
+
+## Go API
+
+The Go API is an implementation in pure Go, supporting domain sockets and TCP.
+
+[Go Example](https://github.com/nanoapi/api-go/blob/master/examples/simple/main.go)
 
 ## Request/Response Protocol
 
