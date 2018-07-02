@@ -1,0 +1,345 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Tutorial for adding new messages · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="DOC.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="PROTOCOL.html">
+            
+                <a href="PROTOCOL.html">
+            
+                    
+                    Request/Response Protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="NODE.html">
+            
+                <a href="NODE.html">
+            
+                    
+                    Node API Implementation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="NODECONFIG.html">
+            
+                <a href="NODECONFIG.html">
+            
+                    
+                    Node Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="DOC.html">
+            
+                <a href="DOC.html">
+            
+                    
+                    Generated Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="TUTORIAL.html">
+            
+                <a href="TUTORIAL.html">
+            
+                    
+                    Tutorial for adding new messages
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Tutorial for adding new messages</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="overview">Overview</h1>
+<p>In this tutorial, we&apos;ll add a new API feature to the node. The request takes an xrb/nano address and the response indicates whether or not it&apos;s valid.</p>
+<h2 id="updating-protobuf">Updating protobuf</h2>
+<p>We&apos;ll update <code>core.proto</code> and <code>util.proto</code>, which you&apos;ll find under the node&apos;s <code>protobuf</code> directory. For more complex tasks, you may want to create new proto files.</p>
+<h3 id="the-request-type">The request type</h3>
+<p>First of all, we need to add the request type enum to <code>core.proto</code>. </p>
+<p>This uniquely identifies the request with an integer. This is what makes the clients know what message has arrived over the protocol (protobuf is not self describing in its serialized form)</p>
+<pre><code>enum RequestType
+{
+    ...
+    ADDRESS_VALID = 1000;
+}
+</code></pre><p>The numeric value is arbitrary, but must be unique and must never be changed or reused. We set it to 1000 in anticipation of other address related APIs, just to group them together.</p>
+<h3 id="the-request-message">The request message</h3>
+<p>Next we define the request message in <code>util.proto</code>. </p>
+<pre><code>/** Check if the supplied address is correct */
+message req_address_valid {
+    /** Address to check, such as xrb_... and nano_...  */
+    string address = 1;
+}
+</code></pre><p>The message name <strong>must</strong> be the same as the request type enum, but with a <code>req_</code> prefix, short for request. We also lowercase message names.</p>
+<p>This naming convention allows reflective techniques, such as building a generic REST server.</p>
+<p>Having <code>req_</code> and <code>res_</code> prefixes is also helpful for editor completion, grepping, etc.</p>
+<h3 id="the-response-message">The response message</h3>
+<p>Our final protobuf change is adding the response message to <code>util.proto</code></p>
+<pre><code>/** Result of address validation */
+message res_address_valid {
+    /** True if the address is valid */
+    bool valid = 1;
+}
+</code></pre><p>We use the same naming convention here, but with a <code>res_</code> prefix, short for response.</p>
+<h2 id="implementing-the-functionality">Implementing the functionality</h2>
+<p>In the C++ node, open <code>api.hpp</code> an add this declaration to <code>api_handler</code>:</p>
+<pre><code class="lang-c++">auto request (req_address_valid request) -&gt; maybe_unique_ptr&lt;nano::api::res_address_valid&gt;;
+</code></pre>
+<p>Note that <code>maybe_unique_ptr</code> is just a convenient <code>std::expected</code> alias. It means we&apos;re going to return either a <code>std::unique_ptr&lt;res_address_valid&gt;</code> or a <code>std::error_code</code>.</p>
+<p>Next, let&apos;s actually implement the address-checking functionality in <code>api.cpp</code></p>
+<pre><code class="lang-c++"><span class="hljs-keyword">auto</span> nano::api::api_handler::request (req_address_valid request_a) -&gt; maybe_unique_ptr&lt;nano::api::res_address_valid&gt;
+{
+    <span class="hljs-keyword">auto</span> res = <span class="hljs-built_in">std</span>::make_unique&lt;nano::api::res_address_valid&gt; ();
+    res-&gt;set_valid (xrb_valid_address (request_a.address ().c_str ()) == <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::move (res);
+}
+</code></pre>
+<p>Finally, make sure the request gets called when the node sees the <code>ADDRESS_VALID</code> request type in the parse method:</p>
+<pre><code class="lang-c++">    <span class="hljs-keyword">case</span> RequestType::ADDRESS_VALID:
+    {
+        msg = parse_and_request&lt;req_address_valid&gt; (buffer_a);
+        <span class="hljs-keyword">break</span>;
+    }
+</code></pre>
+<p>Rebuild and commit.</p>
+<h2 id="updating-clients">Updating clients</h2>
+<p>Old clients will continue to work with this updated node, but nobody knows about the new message yet.</p>
+<p>Generally, all that&apos;s needed is running <code>ci/protobuf-gen.sh</code> in the respective client repository. Rebuilding is obviously needed for compiled languages.</p>
+<h2 id="recommended-reading">Recommended reading</h2>
+<p><a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank">https://developers.google.com/protocol-buffers/docs/proto3</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="DOC.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Generated Documentation">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Tutorial for adding new messages","level":"1.6","depth":1,"previous":{"title":"Generated Documentation","level":"1.5","depth":1,"path":"DOC.md","ref":"DOC.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"TUTORIAL.md","mtime":"2018-07-04T19:11:23.468Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-09T01:12:49.470Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -175,7 +175,7 @@
         
           
           <li>
-            <a href="#core.proto">core.proto</a>
+            <a href="#accounts.proto">accounts.proto</a>
             <ul>
               
                 <li>
@@ -191,15 +191,26 @@
                 </li>
               
                 <li>
+                  <a href="#nano.api.res_account_pending"><span class="badge">M</span>res_account_pending</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#core.proto">core.proto</a>
+            <ul>
+              
+                <li>
                   <a href="#nano.api.req_ping"><span class="badge">M</span>req_ping</a>
                 </li>
               
                 <li>
                   <a href="#nano.api.request"><span class="badge">M</span>request</a>
-                </li>
-              
-                <li>
-                  <a href="#nano.api.res_account_pending"><span class="badge">M</span>res_account_pending</a>
                 </li>
               
                 <li>
@@ -224,6 +235,25 @@
             </ul>
           </li>
         
+          
+          <li>
+            <a href="#util.proto">util.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#nano.api.req_address_valid"><span class="badge">M</span>req_address_valid</a>
+                </li>
+              
+                <li>
+                  <a href="#nano.api.res_address_valid"><span class="badge">M</span>res_address_valid</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
         <li><a href="#scalar-value-types">Scalar Value Types</a></li>
       </ul>
     </div>
@@ -231,7 +261,7 @@
     
       
       <div class="file-heading">
-        <h2 id="core.proto">core.proto</h2><a href="#title">Top</a>
+        <h2 id="accounts.proto">accounts.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
@@ -347,6 +377,43 @@
 
         
       
+        <h3 id="nano.api.res_account_pending">res_account_pending</h3>
+        <p>account_pending result</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>pending</td>
+                  <td><a href="#nano.api.account_pending">account_pending</a></td>
+                  <td>repeated</td>
+                  <td><p>List of accounts, each with a list of pending blocks </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="core.proto">core.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
         <h3 id="nano.api.req_ping">req_ping</h3>
         <p>Send ping to the node</p>
 
@@ -385,29 +452,6 @@
                   <td><a href="#nano.api.RequestType">RequestType</a></td>
                   <td></td>
                   <td><p>Request type </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
-      
-        <h3 id="nano.api.res_account_pending">res_account_pending</h3>
-        <p>account_pending result</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>pending</td>
-                  <td><a href="#nano.api.account_pending">account_pending</a></td>
-                  <td>repeated</td>
-                  <td><p>List of accounts, each with a list of pending blocks </p></td>
                 </tr>
               
             </tbody>
@@ -463,8 +507,7 @@ This may not be set if error_code is non-zero. </p></td>
                   <td>error_code</td>
                   <td><a href="#sint32">sint32</a></td>
                   <td></td>
-                  <td><p>Context dependent error code. For instance, if IO_ERROR occurs, the error_code
-may contain a more specific, system depended error code. </p></td>
+                  <td><p>If non-zero, an error has occurred. </p></td>
                 </tr>
               
                 <tr>
@@ -547,7 +590,7 @@ may contain a more specific, system depended error code. </p></td>
               <tr>
                 <td>ACCOUNT_BALANCE</td>
                 <td>3</td>
-                <td><p></p></td>
+                <td><p>accounts.proto message types</p></td>
               </tr>
             
               <tr>
@@ -570,6 +613,73 @@ may contain a more specific, system depended error code. </p></td>
             
           </tbody>
         </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="util.proto">util.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="nano.api.req_address_valid">req_address_valid</h3>
+        <p>Check if the supplied address is correct</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address to check, such as xrb_... and nano_... </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="nano.api.res_address_valid">res_address_valid</h3>
+        <p>Address check result. If invalid, the message string contains the reason.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>valid</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>True if the address is valid </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reason</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The reason the address is invalid. May be empty. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+
       
 
       

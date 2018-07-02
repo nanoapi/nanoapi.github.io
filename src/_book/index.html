@@ -105,7 +105,7 @@
                 <a href="PROTOCOL.html">
             
                     
-                    Message Protocol
+                    Request/Response Protocol
             
                 </a>
             
@@ -132,6 +132,32 @@
             
                     
                     Node Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="DOC.html">
+            
+                <a href="DOC.html">
+            
+                    
+                    Generated Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="TUTORIAL.html">
+            
+                <a href="TUTORIAL.html">
+            
+                    
+                    Tutorial for adding new messages
             
                 </a>
             
@@ -185,39 +211,37 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="about-the-nano-node-api">About the Nano Node API</h1>
-<p>The Node API exposes functionality to external processes over various interprocess mechanisms. Using the API, you&apos;ll be able to query account information, sign blocks, check for pending transactions, etc.</p>
+<p>The Node API exposes functionality to external processes over various interprocess mechanisms.</p>
+<p>The long-term plan is to support most (but not all) of the current RPC actions, though using smaller and more composable messages.</p>
 <p>The API currently offers:</p>
 <ul>
-<li>C and C++ API</li>
-<li>Python API</li>
-<li>Go API</li>
-<li>REST server based on the Python API</li>
+<li>C, C++, Python and Go clients</li>
+<li>Two REST servers based on the Go and Python clients</li>
 <li>Transports over TCP and domain sockets</li>
 </ul>
-<p>The following bindings are planned:</p>
+<p>The following clients are planned:</p>
 <ul>
 <li>Node (Typescript and Javascript)</li>
-<li>Java</li>
-<li>Rust</li>
+<li>Java, using Netty</li>
+<li>Rust, using Tokio</li>
 </ul>
 <h2 id="protocol-buffers">Protocol Buffers</h2>
-<p>The API is based on exchanging messages defined using Protocol Buffers (protobuf). The request/response protocol is agnostic about the serialization format. Hence, adding support for additional serialization formats, such as Cap&apos;n&apos;Proto, is possible in the future.</p>
+<p>The API is based on exchanging protobuf messages. That said, the request/response protocol is agnostic about the serialization format. Hence, adding support for additional serialization formats, such as Cap&apos;n&apos;Proto, is possible in the future.</p>
 <p>Protocol Buffers offers the following benefits:</p>
 <ul>
 <li>Relatively easy to support new programming languages and platforms.</li>
 <li>A single message definition enforces up-to-date documentation that&apos;s relevant to all language bindings.</li>
-<li>Efficient on-wire binary representation.</li>
-<li>A canonical JSON representation makes it easy to write stuff like REST servers in dynamic languages.</li>
+<li>Compact on-wire binary representation.</li>
+<li>A canonical JSON representation makes it easy to write stuff like REST servers.</li>
 </ul>
-<p>Request can theorectically be sent over any number of transports, such as TCP, domain sockets, pipes and shared memory. Currently, TCP and domain sockets are supported by the node.</p>
+<p>In theory, requests can be sent over any number of transports, such as TCP, domain sockets, pipes and shared memory. Currently, TCP and domain sockets are supported by the node.</p>
 <h3 id="message-definitions">Message Definitions</h3>
-<p>The protobuffer definition is part of the node respository (see the protobuf directory) and is documented at <a href="https://nanoapi.github.io/protobuf/index.html" target="_blank">https://nanoapi.github.io/protobuf/index.html</a></p>
+<p>The protobuffer definition is part of the node respository, and is documented at <a href="https://nanoapi.github.io/protobuf/index.html" target="_blank">https://nanoapi.github.io/protobuf/index.html</a></p>
 <h2 id="repository-structure">Repository Structure</h2>
-<p>All code is located under the <a href="https://github.com/nanoapi/" target="_blank">nanoapi</a> organization at GitHub.</p>
+<p>All client code is located under the <a href="https://github.com/nanoapi/" target="_blank">nanoapi</a> organization at GitHub.</p>
 <ul>
-<li>The <code>protobuf</code> repository contains the definition</li>
 <li>Each language binding is a separate repository, <code>api-&lt;language&gt;</code>.</li>
-<li>Each language repository contains a script to generate code from the protobuf definition.</li>
+<li>Each repository contains a script to generate source code from the node&apos;s protobuf definitions.</li>
 </ul>
 <h2 id="runtime-libraries">Runtime Libraries</h2>
 <p>For each supported language, a runtime library is available. Please see the <code>api-&lt;language&gt;</code> repositories in <a href="https://github.com/nanoapi/" target="_blank">https://github.com/nanoapi/</a> for more information.</p>
@@ -225,15 +249,15 @@
 <ul>
 <li>Generated Protobuf message types.</li>
 <li>Functionality to connect to the Nano node over various transports. The node must be configured to accept connections on the given transport. A node may accept connections on multiple transports at once.</li>
-<li>A request/response API, allowing Protbuf-generated messages to be exchanged over the given transport.</li>
+<li>A request/response API</li>
 </ul>
 <h2 id="python-api">Python API</h2>
-<p>Here&apos;s an example of using Python to connect to the node over domain sockets and query pending accounts:</p>
+<p>Here&apos;s an example of using Python to connect to the node over domain sockets and query pending block hashes:</p>
 <pre><code class="lang-python"><span class="hljs-keyword">from</span> nanoapi <span class="hljs-keyword">import</span> (Client, SocketConnection, Model)
 
 <span class="hljs-comment"># Connect using a domain socket. On multiuser systems, the directory can be protected to allow only specific users.</span>
-<span class="hljs-comment"># To switch to tcp, simply use tcp://host:post as the connection string.</span>
-nano = Client(SocketConnection(<span class="hljs-string">&apos;local:///tmp/nano&apos;</span>))
+<span class="hljs-comment"># To switch to tcp, use tcp://host:post as the connection string.</span>
+nano = Session(SocketConnection(<span class="hljs-string">&apos;local:///tmp/nano&apos;</span>))
 
 <span class="hljs-comment"># Account pending request</span>
 pending = Model.req_account_pending();
@@ -244,7 +268,7 @@ pending.accounts.append(<span class="hljs-string">&quot;xrb_3eff1rokrp4ryronxpjd
 <span class="hljs-comment"># Print the request as JSON</span>
 <span class="hljs-keyword">print</span> (nano.to_json(pending))
 
-<span class="hljs-comment"># Call the Node</span>
+<span class="hljs-comment"># Send request to the node</span>
 res = nano.request(pending)
 
 <span class="hljs-comment"># Print the response as JSON</span>
@@ -253,20 +277,74 @@ res = nano.request(pending)
 <h2 id="c-api">C API</h2>
 <p>The C API is fairly low level and requires manual memory management. It is only recommended to use this API to build bindings for new languages, using whatever FFI mechanisms are available.</p>
 <p><a href="https://github.com/nanoapi/api-c/blob/master/examples/example-client.c" target="_blank">C99 Example</a></p>
-<p>Note that you can create clients for new languages without using the C API. This requires Protobuffer support for the language at hand (if not officially support, you&apos;ll likely to find a plugin for the language).</p>
-<p>As for communicating with the node, a new language binding can either reimplement the (very simple) protocol for sending requests over various transports, or it can delegate transport specifics to the C API using FFI bindings.</p>
+<p>Note that you can create clients for new languages without using the C API. This requires protobuf support for the language at hand (if not officially support, you&apos;re likely to find a plugin for the language).</p>
+<p>As for communicating with the node, a new language binding can either reimplement the protocol, or it can delegate transport specifics to the C API using FFI bindings.</p>
 <h2 id="c-api">C++ API</h2>
 <p>The C++ API is a high-level wrapper around the C API.</p>
 <p><a href="https://github.com/nanoapi/api-c/blob/master/examples/example-client.cpp" target="_blank">C++ Example</a></p>
 <h2 id="go-api">Go API</h2>
 <p>The Go API is an implementation in pure Go, supporting domain sockets and TCP.</p>
 <p><a href="https://github.com/nanoapi/api-go/blob/master/examples/simple/main.go" target="_blank">Go Example</a></p>
-<h2 id="requestresponse-protocol">Request/Response Protocol</h2>
-<p>To communicate with the Node over a given transport, the Request/Response Protocol is used. Implementation in most languages is straightforward, since almost all of the serialization and deserialization work is already done by the Protobuf runtime.</p>
-<h2 id="c-node-doxygen-documentation">C++ Node Doxygen Documentation</h2>
-<p>The Node is written in C++ and documentation is currently being moved to Doxygen.</p>
-<p><a href="https://nanoapi.github.io/doxygen/annotated.html" target="_blank">Doxygen Documentation</a></p>
-
+<h2 id="rest-servers">REST servers</h2>
+<p>The Go and Python repositories each provide a REST server. As they employ protobuf reflection, there is nothing to maintain; new messages and changes to existing ones are picked up automatically. </p>
+<p>The Go version uses multiple concurrent node connections and is an order of magnitude faster than the Python version. It also scales to a larger number of clients.</p>
+<p>Translation between JSON and protobuf happens automatically, and the message name is used as the endpoint.</p>
+<p>Sample POST request to <code>http://localhost:8080/api/account_pending</code></p>
+<pre><code>{
+  &quot;count&quot; : 3,
+  &quot;source&quot;: true,
+  &quot;threshold&quot;: &quot;1000000000000000000000000&quot;,
+  &quot;accounts&quot;: [
+    &quot;xrb_1111111111111111111111111111111111111111111111111111hifc8npp&quot;,
+    &quot;xrb_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3&quot;
+  ]
+}
+</code></pre><p>Response:</p>
+<pre><code>{
+    &quot;pending&quot;: [
+        {
+            &quot;account&quot;: &quot;xrb_1111111111111111111111111111111111111111111111111111hifc8npp&quot;,
+            &quot;block_info&quot;: [
+                {
+                    &quot;hash&quot;: &quot;8AD284236B8B595F532133BAFC880A7AD730DA7FAB228F0C1217CB0F5922078D&quot;,
+                    &quot;amount&quot;: &quot;5000000000000000000000000000000&quot;,
+                    &quot;source&quot;: &quot;xrb_3rraux9itg9ukc11jmeqxjdxyuxkgbipq3aq8bm51w1y9jxi75rbrbiesy16&quot;
+                },
+                {
+                    &quot;hash&quot;: &quot;C529AB93A289F8F89B964F4C970D9752089A4156E4C44F70761449B597997BDF&quot;,
+                    &quot;amount&quot;: &quot;118657000000000000000000000000000000&quot;,
+                    &quot;source&quot;: &quot;xrb_35jjmmmh81kydepzeuf9oec8hzkay7msr6yxagzxpcht7thwa5bus5tomgz9&quot;
+                },
+                {
+                    &quot;hash&quot;: &quot;C7764B37F04C74CF814B19C4DC6FFD53B5E999495C8E5C0D7EA1372A57E1E9C6&quot;,
+                    &quot;amount&quot;: &quot;1238933000000000000000000000000000000&quot;,
+                    &quot;source&quot;: &quot;xrb_13ezf4od79h1tgj9aiu4djzcmmguendtjfuhwfukhuucboua8cpoihmh8byo&quot;
+                }
+            ]
+        },
+        {
+            &quot;account&quot;: &quot;xrb_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3&quot;,
+            &quot;block_info&quot;: [
+                {
+                    &quot;hash&quot;: &quot;4C1FEEF0BEA7F50BE35489A1233FE002B212DEA554B55B1B470D78BD8F210C74&quot;,
+                    &quot;amount&quot;: &quot;106370018000000000000000000000000&quot;,
+                    &quot;source&quot;: &quot;xrb_13ezf4od79h1tgj9aiu4djzcmmguendtjfuhwfukhuucboua8cpoihmh8byo&quot;
+                },
+                {
+                    &quot;hash&quot;: &quot;5BE46EB2D80A147FE7F96CA43407496758900A31E7053A8A90683328A4A2BFFF&quot;,
+                    &quot;amount&quot;: &quot;308757000000000000000000000000&quot;,
+                    &quot;source&quot;: &quot;xrb_13ezf4od79h1tgj9aiu4djzcmmguendtjfuhwfukhuucboua8cpoihmh8byo&quot;
+                },
+                {
+                    &quot;hash&quot;: &quot;6003F679CBED0AC2384B2439FD1EA06003335871823E6BEFD37B833BE8AC6EDC&quot;,
+                    &quot;amount&quot;: &quot;1408360000000000000000000000000&quot;,
+                    &quot;source&quot;: &quot;xrb_13ezf4od79h1tgj9aiu4djzcmmguendtjfuhwfukhuucboua8cpoihmh8byo&quot;
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
                                 
                                 </section>
                             
@@ -294,7 +372,7 @@ res = nano.request(pending)
             
                 
                 
-                <a href="PROTOCOL.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Message Protocol">
+                <a href="PROTOCOL.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Request/Response Protocol">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -305,7 +383,7 @@ res = nano.request(pending)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Overview","level":"1.1","depth":1,"next":{"title":"Message Protocol","level":"1.2","depth":1,"path":"PROTOCOL.md","ref":"PROTOCOL.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2018-07-01T22:53:32.578Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-01T23:56:10.752Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Overview","level":"1.1","depth":1,"next":{"title":"Request/Response Protocol","level":"1.2","depth":1,"path":"PROTOCOL.md","ref":"PROTOCOL.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2018-07-09T01:12:24.457Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-09T01:12:49.470Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

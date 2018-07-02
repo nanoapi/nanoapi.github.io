@@ -152,6 +152,9 @@ rai::uint128_t&#160;</td><td class="memItemRight" valign="bottom"><b>weight</b> 
 <tr class="memitem:a6ce8f90b441f5d42aa3cdad0cf9ed176"><td class="memItemLeft" align="right" valign="top"><a id="a6ce8f90b441f5d42aa3cdad0cf9ed176"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ongoing_keepalive</b> ()</td></tr>
 <tr class="separator:a6ce8f90b441f5d42aa3cdad0cf9ed176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0333c2e9c9089f3d173ff9d9953a1ca"><td class="memItemLeft" align="right" valign="top"><a id="ae0333c2e9c9089f3d173ff9d9953a1ca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ongoing_syn_cookie_cleanup</b> ()</td></tr>
+<tr class="separator:ae0333c2e9c9089f3d173ff9d9953a1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8f3168cc1d08d8e513917869177ada2"><td class="memItemLeft" align="right" valign="top"><a id="ab8f3168cc1d08d8e513917869177ada2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ongoing_rep_crawl</b> ()</td></tr>
 <tr class="separator:ab8f3168cc1d08d8e513917869177ada2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,21 +170,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>backup_wallet</b> ()<
 <tr class="memitem:aff580621425bda25e2c8fd2f763f04f5"><td class="memItemLeft" align="right" valign="top"><a id="aff580621425bda25e2c8fd2f763f04f5"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>price</b> (rai::uint128_t const &amp;, int)</td></tr>
 <tr class="separator:aff580621425bda25e2c8fd2f763f04f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88219c089e1c812e00008a8d684260dc"><td class="memItemLeft" align="right" valign="top"><a id="a88219c089e1c812e00008a8d684260dc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>generate_work</b> (<a class="el" href="classrai_1_1block.html">rai::block</a> &amp;)</td></tr>
-<tr class="separator:a88219c089e1c812e00008a8d684260dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86d1351c06d3a394205d837cc33b2420"><td class="memItemLeft" align="right" valign="top"><a id="a86d1351c06d3a394205d837cc33b2420"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>generate_work</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::uint256_union</a> const &amp;)</td></tr>
-<tr class="separator:a86d1351c06d3a394205d837cc33b2420"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1926d9952305c7d37aba915036ef3377"><td class="memItemLeft" align="right" valign="top"><a id="a1926d9952305c7d37aba915036ef3377"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>generate_work</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::uint256_union</a> const &amp;, std::function&lt; void(uint64_t)&gt;)</td></tr>
-<tr class="separator:a1926d9952305c7d37aba915036ef3377"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56c2c482d58ed80f1b5ea15e007fd974"><td class="memItemLeft" align="right" valign="top"><a id="a56c2c482d58ed80f1b5ea15e007fd974"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>work_generate_blocking</b> (<a class="el" href="classrai_1_1block.html">rai::block</a> &amp;)</td></tr>
+<tr class="separator:a56c2c482d58ed80f1b5ea15e007fd974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a675c6baa5330d149e088f8d4bfbd9de9"><td class="memItemLeft" align="right" valign="top"><a id="a675c6baa5330d149e088f8d4bfbd9de9"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>work_generate_blocking</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::uint256_union</a> const &amp;)</td></tr>
+<tr class="separator:a675c6baa5330d149e088f8d4bfbd9de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9090769df409480acc12598af6de6891"><td class="memItemLeft" align="right" valign="top"><a id="a9090769df409480acc12598af6de6891"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>work_generate</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::uint256_union</a> const &amp;, std::function&lt; void(uint64_t)&gt;)</td></tr>
+<tr class="separator:a9090769df409480acc12598af6de6891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa453b601eb7d3ef1edaf5607f6eb8a09"><td class="memItemLeft" align="right" valign="top"><a id="aa453b601eb7d3ef1edaf5607f6eb8a09"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>add_initial_peers</b> ()</td></tr>
 <tr class="separator:aa453b601eb7d3ef1edaf5607f6eb8a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33f079a0a8c0a4618bf67d54b0080b23"><td class="memItemLeft" align="right" valign="top"><a id="a33f079a0a8c0a4618bf67d54b0080b23"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>block_confirm</b> (std::shared_ptr&lt; <a class="el" href="classrai_1_1block.html">rai::block</a> &gt;)</td></tr>
 <tr class="separator:a33f079a0a8c0a4618bf67d54b0080b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee2481e02f93f1af493322466345dc28"><td class="memItemLeft" align="right" valign="top"><a id="aee2481e02f93f1af493322466345dc28"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>process_fork</b> (MDB_txn *, std::shared_ptr&lt; <a class="el" href="classrai_1_1block.html">rai::block</a> &gt;)</td></tr>
+<tr class="separator:aee2481e02f93f1af493322466345dc28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78c3170d728930a434e4fa1094bbf9b2"><td class="memItemLeft" align="right" valign="top"><a id="a78c3170d728930a434e4fa1094bbf9b2"></a>
 rai::uint128_t&#160;</td><td class="memItemRight" valign="bottom"><b>delta</b> ()</td></tr>
 <tr class="separator:a78c3170d728930a434e4fa1094bbf9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -263,9 +269,12 @@ std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>block_processo
 <tr class="memitem:a5110e1d3a578181892e5a53b98ad09ee"><td class="memItemLeft" align="right" valign="top"><a id="a5110e1d3a578181892e5a53b98ad09ee"></a>
 <a class="el" href="classrai_1_1stat.html">rai::stat</a>&#160;</td><td class="memItemRight" valign="bottom"><b>stats</b></td></tr>
 <tr class="separator:a5110e1d3a578181892e5a53b98ad09ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c038f8c3979250f51849f454fe23190"><td class="memItemLeft" align="right" valign="top"><a id="a2c038f8c3979250f51849f454fe23190"></a>
-<a class="el" href="classrai_1_1ipc__server.html">rai::ipc_server</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ipc_server</b></td></tr>
-<tr class="separator:a2c038f8c3979250f51849f454fe23190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9be55064538fdde1c406bdaff5742b1"><td class="memItemLeft" align="right" valign="top"><a id="ab9be55064538fdde1c406bdaff5742b1"></a>
+<a class="el" href="classnano_1_1ipc_1_1ipc__server.html">nano::ipc::ipc_server</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ipc_server</b></td></tr>
+<tr class="separator:ab9be55064538fdde1c406bdaff5742b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f6482e030453334da10988d3b2981ac"><td class="memItemLeft" align="right" valign="top"><a id="a0f6482e030453334da10988d3b2981ac"></a>
+<a class="el" href="classrai_1_1keypair.html">rai::keypair</a>&#160;</td><td class="memItemRight" valign="bottom"><b>node_id</b></td></tr>
+<tr class="separator:a0f6482e030453334da10988d3b2981ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -281,6 +290,9 @@ static std::chrono::seconds constexpr&#160;</td><td class="memItemRight" valign=
 <tr class="memitem:aca275657fa5b0df99b7caf201f254b41"><td class="memItemLeft" align="right" valign="top"><a id="aca275657fa5b0df99b7caf201f254b41"></a>
 static std::chrono::seconds constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>cutoff</b> = period * 5</td></tr>
 <tr class="separator:aca275657fa5b0df99b7caf201f254b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b3371c417d79547c517ffa793d0cdc"><td class="memItemLeft" align="right" valign="top"><a id="ae9b3371c417d79547c517ffa793d0cdc"></a>
+static std::chrono::seconds constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>syn_cookie_cutoff</b> = std::chrono::seconds (5)</td></tr>
+<tr class="separator:ae9b3371c417d79547c517ffa793d0cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86ad41a45d985c140658ff10f59ce9f1"><td class="memItemLeft" align="right" valign="top"><a id="a86ad41a45d985c140658ff10f59ce9f1"></a>
 static std::chrono::minutes constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>backup_interval</b> = std::chrono::minutes (5)</td></tr>
 <tr class="separator:a86ad41a45d985c140658ff10f59ce9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>

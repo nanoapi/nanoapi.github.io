@@ -84,9 +84,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
 <tr class="memitem:a5edcbea9f0de8cd5320b232c4833de23"><td class="memItemLeft" align="right" valign="top"><a id="a5edcbea9f0de8cd5320b232c4833de23"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>flush</b> ()</td></tr>
 <tr class="separator:a5edcbea9f0de8cd5320b232c4833de23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87313c9805ea5cb9d56aaf679d2f4471"><td class="memItemLeft" align="right" valign="top"><a id="a87313c9805ea5cb9d56aaf679d2f4471"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (std::shared_ptr&lt; <a class="el" href="classrai_1_1block.html">rai::block</a> &gt;)</td></tr>
-<tr class="separator:a87313c9805ea5cb9d56aaf679d2f4471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83314c396a1c08450f4e798dc6decb04"><td class="memItemLeft" align="right" valign="top"><a id="a83314c396a1c08450f4e798dc6decb04"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>full</b> ()</td></tr>
+<tr class="separator:a83314c396a1c08450f4e798dc6decb04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcaaf5adf91994411d65d41e822dc19f"><td class="memItemLeft" align="right" valign="top"><a id="adcaaf5adf91994411d65d41e822dc19f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (std::shared_ptr&lt; <a class="el" href="classrai_1_1block.html">rai::block</a> &gt;, std::chrono::steady_clock::time_point)</td></tr>
+<tr class="separator:adcaaf5adf91994411d65d41e822dc19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b2351ccc5c9c496d223d84f5a9b2323"><td class="memItemLeft" align="right" valign="top"><a id="a8b2351ccc5c9c496d223d84f5a9b2323"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>force</b> (std::shared_ptr&lt; <a class="el" href="classrai_1_1block.html">rai::block</a> &gt;)</td></tr>
 <tr class="separator:a8b2351ccc5c9c496d223d84f5a9b2323"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,9 +102,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>have_blocks</b> ()</t
 <tr class="memitem:a9e8bbf77dc25f164289c800b86d6baef"><td class="memItemLeft" align="right" valign="top"><a id="a9e8bbf77dc25f164289c800b86d6baef"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>process_blocks</b> ()</td></tr>
 <tr class="separator:a9e8bbf77dc25f164289c800b86d6baef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af15f2d3c08d4080b113073101e258187"><td class="memItemLeft" align="right" valign="top"><a id="af15f2d3c08d4080b113073101e258187"></a>
-<a class="el" href="classrai_1_1process__return.html">rai::process_return</a>&#160;</td><td class="memItemRight" valign="bottom"><b>process_receive_one</b> (MDB_txn *, std::shared_ptr&lt; <a class="el" href="classrai_1_1block.html">rai::block</a> &gt;)</td></tr>
-<tr class="separator:af15f2d3c08d4080b113073101e258187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a720976a033fc1fd760e0efe6974ac1ae"><td class="memItemLeft" align="right" valign="top"><a id="a720976a033fc1fd760e0efe6974ac1ae"></a>
+<a class="el" href="classrai_1_1process__return.html">rai::process_return</a>&#160;</td><td class="memItemRight" valign="bottom"><b>process_receive_one</b> (MDB_txn *, std::shared_ptr&lt; <a class="el" href="classrai_1_1block.html">rai::block</a> &gt;, std::chrono::steady_clock::time_point=std::chrono::steady_clock::now())</td></tr>
+<tr class="separator:a720976a033fc1fd760e0efe6974ac1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>rai/node/<a class="el" href="node_8hpp_source.html">node.hpp</a></li>

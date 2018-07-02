@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['samples',['samples',['../classrai_1_1stat.html#acf575bbaa67f308a8ead102cdcefb815',1,'rai::stat']]],
-  ['set_5fcurrent_5fend',['set_current_end',['../classrai_1_1bulk__pull__server.html#aadb465d85842a9b55b50553b51be0549',1,'rai::bulk_pull_server']]],
-  ['set_5fparams',['set_params',['../classrai_1_1bulk__pull__blocks__server.html#aa586f89233f77d5ab1a060d14a0af13a',1,'rai::bulk_pull_blocks_server']]],
-  ['stat',['stat',['../classrai_1_1stat.html#a477b99f0b6ff40ba56775929c6a99ca0',1,'rai::stat::stat()'],['../classrai_1_1stat.html#a6f170d53cfc3c96f374121bb5e124189',1,'rai::stat::stat(rai::stat_config config)']]]
+  ['timer_5fstart',['timer_start',['../classsession.html#a7686ef7220b91277c7ec54e4f9daeb02',1,'session']]],
+  ['to_5fobject',['to_object',['../classjson__writer.html#ae2abe4b4fa44648ccd254b44384606a3',1,'json_writer::to_object()'],['../classrai_1_1stat__log__sink.html#ac9738666281bdcef356b9f448b973b21',1,'rai::stat_log_sink::to_object()']]],
+  ['to_5fstring',['to_string',['../classjson__writer.html#a2268a2a86a5fb997fc32803723542b92',1,'json_writer::to_string()'],['../classrai_1_1stat__log__sink.html#afaa32dbf104a49e777db27216d94ad48',1,'rai::stat_log_sink::to_string()']]]
 ];

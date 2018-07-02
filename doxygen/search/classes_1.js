@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['bad_5fexpected_5faccess',['bad_expected_access',['../classtl_1_1bad__expected__access.html',1,'tl']]],
   ['balance_5fvisitor',['balance_visitor',['../classrai_1_1balance__visitor.html',1,'rai']]],
   ['block',['block',['../classrai_1_1block.html',1,'rai']]],
   ['block_5farrival',['block_arrival',['../classrai_1_1block__arrival.html',1,'rai']]],

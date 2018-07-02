@@ -84,24 +84,24 @@ Inheritance diagram for rai::bootstrap_server:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac9889e4f085145dbb9723d7b0c3941f9"><td class="memItemLeft" align="right" valign="top"><a id="ac9889e4f085145dbb9723d7b0c3941f9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>bootstrap_server</b> (std::shared_ptr&lt; boost::asio::ip::tcp::socket &gt;, std::shared_ptr&lt; <a class="el" href="classrai_1_1node.html">rai::node</a> &gt;)</td></tr>
-<tr class="separator:ac9889e4f085145dbb9723d7b0c3941f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c05f0aa67fd3d17b365d03a4fddcf7b"><td class="memItemLeft" align="right" valign="top"><a id="a4c05f0aa67fd3d17b365d03a4fddcf7b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>bootstrap_server</b> (std::shared_ptr&lt; <a class="el" href="classrai_1_1socket.html">rai::socket</a> &gt;, std::shared_ptr&lt; <a class="el" href="classrai_1_1node.html">rai::node</a> &gt;)</td></tr>
+<tr class="separator:a4c05f0aa67fd3d17b365d03a4fddcf7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15198b4fee0cde18ca5b891094e09bf4"><td class="memItemLeft" align="right" valign="top"><a id="a15198b4fee0cde18ca5b891094e09bf4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>receive</b> ()</td></tr>
 <tr class="separator:a15198b4fee0cde18ca5b891094e09bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6dfedf87fa48ecc6acb62dead63587b"><td class="memItemLeft" align="right" valign="top"><a id="ac6dfedf87fa48ecc6acb62dead63587b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_header_action</b> (boost::system::error_code const &amp;, size_t)</td></tr>
 <tr class="separator:ac6dfedf87fa48ecc6acb62dead63587b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a2d5d8396b59e0e2bcd63695183bd72"><td class="memItemLeft" align="right" valign="top"><a id="a6a2d5d8396b59e0e2bcd63695183bd72"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_bulk_pull_action</b> (boost::system::error_code const &amp;, size_t)</td></tr>
-<tr class="separator:a6a2d5d8396b59e0e2bcd63695183bd72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2ca4c3ceaca2c89b5145523528b900f"><td class="memItemLeft" align="right" valign="top"><a id="ad2ca4c3ceaca2c89b5145523528b900f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_bulk_pull_blocks_action</b> (boost::system::error_code const &amp;, size_t)</td></tr>
-<tr class="separator:ad2ca4c3ceaca2c89b5145523528b900f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad977cf4373342952398b23c898fb0e56"><td class="memItemLeft" align="right" valign="top"><a id="ad977cf4373342952398b23c898fb0e56"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_frontier_req_action</b> (boost::system::error_code const &amp;, size_t)</td></tr>
-<tr class="separator:ad977cf4373342952398b23c898fb0e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af44e8b13bcfd3d1d8e7dc7fa533224a9"><td class="memItemLeft" align="right" valign="top"><a id="af44e8b13bcfd3d1d8e7dc7fa533224a9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_bulk_pull_action</b> (boost::system::error_code const &amp;, size_t, <a class="el" href="classrai_1_1message__header.html">rai::message_header</a> const &amp;)</td></tr>
+<tr class="separator:af44e8b13bcfd3d1d8e7dc7fa533224a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51fd2323e92a65764868983c0aa6a708"><td class="memItemLeft" align="right" valign="top"><a id="a51fd2323e92a65764868983c0aa6a708"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_bulk_pull_blocks_action</b> (boost::system::error_code const &amp;, size_t, <a class="el" href="classrai_1_1message__header.html">rai::message_header</a> const &amp;)</td></tr>
+<tr class="separator:a51fd2323e92a65764868983c0aa6a708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ce43349575aa1a20ade261f73321e9c"><td class="memItemLeft" align="right" valign="top"><a id="a9ce43349575aa1a20ade261f73321e9c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_frontier_req_action</b> (boost::system::error_code const &amp;, size_t, <a class="el" href="classrai_1_1message__header.html">rai::message_header</a> const &amp;)</td></tr>
+<tr class="separator:a9ce43349575aa1a20ade261f73321e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33cb410e03779a55b5e75349806beb2d"><td class="memItemLeft" align="right" valign="top"><a id="a33cb410e03779a55b5e75349806beb2d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_bulk_push_action</b> ()</td></tr>
 <tr class="separator:a33cb410e03779a55b5e75349806beb2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,12 +117,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>run_next</b> ()</td><
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a24d726f86d6569f7cfc1c2223df210c4"><td class="memItemLeft" align="right" valign="top"><a id="a24d726f86d6569f7cfc1c2223df210c4"></a>
-std::array&lt; uint8_t, 128 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>receive_buffer</b></td></tr>
-<tr class="separator:a24d726f86d6569f7cfc1c2223df210c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae05810ab81372e97954b2a00a2a092a4"><td class="memItemLeft" align="right" valign="top"><a id="ae05810ab81372e97954b2a00a2a092a4"></a>
-std::shared_ptr&lt; boost::asio::ip::tcp::socket &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b></td></tr>
-<tr class="separator:ae05810ab81372e97954b2a00a2a092a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab63c10dfb610982843e6e04a2c55e04b"><td class="memItemLeft" align="right" valign="top"><a id="ab63c10dfb610982843e6e04a2c55e04b"></a>
+std::shared_ptr&lt; std::vector&lt; uint8_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>receive_buffer</b></td></tr>
+<tr class="separator:ab63c10dfb610982843e6e04a2c55e04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e9e4ff6c894e4dc7ee583bd349c1e6"><td class="memItemLeft" align="right" valign="top"><a id="a38e9e4ff6c894e4dc7ee583bd349c1e6"></a>
+std::shared_ptr&lt; <a class="el" href="classrai_1_1socket.html">rai::socket</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b></td></tr>
+<tr class="separator:a38e9e4ff6c894e4dc7ee583bd349c1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa76856bdeefd5785d8d8c2d42fb5d5e1"><td class="memItemLeft" align="right" valign="top"><a id="aa76856bdeefd5785d8d8c2d42fb5d5e1"></a>
 std::shared_ptr&lt; <a class="el" href="classrai_1_1node.html">rai::node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>node</b></td></tr>
 <tr class="separator:aa76856bdeefd5785d8d8c2d42fb5d5e1"><td class="memSeparator" colspan="2">&#160;</td></tr>

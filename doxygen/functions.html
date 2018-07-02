@@ -71,11 +71,14 @@ $(function() {
 : <a class="el" href="classrai_1_1block__store.html#a4ca250e7de348980647c54bd5236b2c2">rai::block_store</a>
 </li>
 <li>add()
-: <a class="el" href="classrai_1_1stat.html#a6eca6e690f80f2f5c9832c84c1f9564d">rai::stat</a>
+: <a class="el" href="classrai_1_1stat.html#aacba55860e7c76d6c54ffd43bb91986e">rai::stat</a>
 , <a class="el" href="classrai_1_1stat__datapoint.html#abfb7b723280e875d647e44a8e7a3a43a">rai::stat_datapoint</a>
 </li>
-<li>allocs
-: <a class="el" href="structnano__session.html#a53fd535d712fa7a232c0ee34e229548e">nano_session</a>
+<li>and_then()
+: <a class="el" href="classtl_1_1expected.html#a9389f2c726eb89c2ffe93866a7abb55c">tl::expected&lt; T, E &gt;</a>
+</li>
+<li>async_read_exactly()
+: <a class="el" href="classsession.html#a66a4ddea8dd6dc2a1a8804eaca8c5ffe">session&lt; SOCKET_TYPE &gt;</a>
 </li>
 </ul>
 
@@ -126,8 +129,12 @@ $(function() {
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
+<li>delete_node_id()
+: <a class="el" href="classrai_1_1block__store.html#a24fbfcdb1ccc8d6a148bdd2efc06edd2">rai::block_store</a>
+</li>
 <li>deserialize_json()
-: <a class="el" href="classrai_1_1stat__config.html#a6c4bf897e671b7d706a4db1f482e88ac">rai::stat_config</a>
+: <a class="el" href="classnano_1_1ipc_1_1ipc__config.html#ade92e6be1efdc57f6fc7193db39ea29c">nano::ipc::ipc_config</a>
+, <a class="el" href="classrai_1_1stat__config.html#a6c4bf897e671b7d706a4db1f482e88ac">rai::stat_config</a>
 </li>
 <li>detail
 : <a class="el" href="classrai_1_1stat.html#a9358b94c987fffcb6e52f996035ea3c4">rai::stat</a>
@@ -142,11 +149,20 @@ $(function() {
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
+<li>emplace()
+: <a class="el" href="classtl_1_1expected.html#a5c2eb13f61ada488de67f3a428e7ed40">tl::expected&lt; T, E &gt;</a>
+</li>
 <li>enable
 : <a class="el" href="classrai_1_1rpc__secure__config.html#afc5d5cc55ed039bba168d1682c52acb7">rai::rpc_secure_config</a>
 </li>
 <li>entries()
 : <a class="el" href="classrai_1_1stat__log__sink.html#a68532d7b3b5288d2193f2fe07c60a698">rai::stat_log_sink</a>
+</li>
+<li>error()
+: <a class="el" href="classtl_1_1expected.html#aa1f80bce937a966e424fa53e5e82dd6e">tl::expected&lt; T, E &gt;</a>
+</li>
+<li>expected()
+: <a class="el" href="classtl_1_1expected.html#a06366ad010ad94a2ab5d223823759812">tl::expected&lt; T, E &gt;</a>
 </li>
 </ul>
 
@@ -165,6 +181,15 @@ $(function() {
 <h3><a id="index_h"></a>- h -</h3><ul>
 <li>handle_handshake()
 : <a class="el" href="classrai_1_1rpc__connection__secure.html#a659ff054d7d4094720b3f72024e57722">rai::rpc_connection_secure</a>
+</li>
+<li>handle_query()
+: <a class="el" href="classsession.html#a7739cb9bbfa149bee551be4b6f446581">session&lt; SOCKET_TYPE &gt;</a>
+</li>
+<li>handle_write()
+: <a class="el" href="classsession.html#a8526d089723e1daea773c9a47952eed6">session&lt; SOCKET_TYPE &gt;</a>
+</li>
+<li>has_value()
+: <a class="el" href="classtl_1_1expected.html#a557dd5bdabe9535165a11fc2123ac513">tl::expected&lt; T, E &gt;</a>
 </li>
 </ul>
 
@@ -220,11 +245,11 @@ $(function() {
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
-<li>magic
-: <a class="el" href="structnano__session.html#af525f7ecc864fd9d9605b8adb786798e">nano_session</a>
+<li>map
+: <a class="el" href="classtl_1_1expected.html#af9da46c07125094e5a537e9ef0716442">tl::expected&lt; T, E &gt;</a>
 </li>
-<li>manage()
-: <a class="el" href="structnano__session.html#a7871349e0f1c7bc15f7c9db9253ae0d1">nano_session</a>
+<li>map_error
+: <a class="el" href="classtl_1_1expected.html#a58dd51068efd3d15fb0a2781b6022f9e">tl::expected&lt; T, E &gt;</a>
 </li>
 <li>meta
 : <a class="el" href="classrai_1_1block__store.html#a706d80d183f09ef289ca8a95d61a4ebf">rai::block_store</a>
@@ -251,6 +276,21 @@ $(function() {
 <li>open_blocks
 : <a class="el" href="classrai_1_1block__store.html#ade9b7b9f276d179d52ff10c90f6b519d">rai::block_store</a>
 </li>
+<li>operator bool()
+: <a class="el" href="classtl_1_1expected.html#a649ac79c16f2dc9588997247da75236f">tl::expected&lt; T, E &gt;</a>
+</li>
+<li>operator*()
+: <a class="el" href="classtl_1_1expected.html#acebc350aaf1e49a3a7816552a1014dbc">tl::expected&lt; T, E &gt;</a>
+</li>
+<li>operator-&gt;()
+: <a class="el" href="classtl_1_1expected.html#ad291378a32207193720e8b93d090513f">tl::expected&lt; T, E &gt;</a>
+</li>
+<li>operator=()
+: <a class="el" href="classtl_1_1expected.html#afcf5f7b12dc2bf229b422c87c9eb1700">tl::expected&lt; T, E &gt;</a>
+</li>
+<li>or_else()
+: <a class="el" href="classtl_1_1expected.html#a73c4a9d68889dc223c5c8ac7934f3d15">tl::expected&lt; T, E &gt;</a>
+</li>
 <li>out()
 : <a class="el" href="classfile__writer.html#a208d7a66238211d5749254e8a00ac4af">file_writer</a>
 , <a class="el" href="classjson__writer.html#a74495333c085196d2c485e78072edffa">json_writer</a>
@@ -267,8 +307,8 @@ $(function() {
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
-<li>raw()
-: <a class="el" href="classunique__ptr__alloc.html#a1a4067b36466fad650a2265d1b9310ea">unique_ptr_alloc&lt; T &gt;</a>
+<li>read_next_request()
+: <a class="el" href="classsession.html#a187a33452104269fb66dbae14c084319">session&lt; SOCKET_TYPE &gt;</a>
 </li>
 <li>receive_blocks
 : <a class="el" href="classrai_1_1block__store.html#a3a31b89a760c4e253ea42cc2814194d0">rai::block_store</a>
@@ -337,6 +377,9 @@ $(function() {
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
+<li>timer_start()
+: <a class="el" href="classsession.html#a7686ef7220b91277c7ec54e4f9daeb02">session&lt; SOCKET_TYPE &gt;</a>
+</li>
 <li>timestamp
 : <a class="el" href="classrai_1_1stat__datapoint.html#ac9d20dd6b3e176f97e20baa36ce49f1b">rai::stat_datapoint</a>
 </li>
@@ -364,6 +407,11 @@ $(function() {
 <h3><a id="index_v"></a>- v -</h3><ul>
 <li>value
 : <a class="el" href="classrai_1_1stat__datapoint.html#a7609f5f135cb2e6ace0827d06abb6e11">rai::stat_datapoint</a>
+, <a class="el" href="classtl_1_1expected.html#a364345b9dbc0c902e89803af03502885">tl::expected&lt; T, E &gt;</a>
+, <a class="el" href="classtl_1_1unexpected.html#a1a1da85a7cde55207063140e6d4b2e88">tl::unexpected&lt; E &gt;</a>
+</li>
+<li>value_or()
+: <a class="el" href="classtl_1_1expected.html#a5692322e4e9a935f3f148c234ecf527b">tl::expected&lt; T, E &gt;</a>
 </li>
 <li>verbose_logging
 : <a class="el" href="classrai_1_1rpc__secure__config.html#aa2a782aaca5d388f65206840d10f21c6">rai::rpc_secure_config</a>

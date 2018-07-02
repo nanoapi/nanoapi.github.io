@@ -77,9 +77,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afb30493a85b6d9a360945caebc6918de"><td class="memItemLeft" align="right" valign="top"><a id="afb30493a85b6d9a360945caebc6918de"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ledger</b> (<a class="el" href="classrai_1_1block__store.html">rai::block_store</a> &amp;, <a class="el" href="classrai_1_1stat.html">rai::stat</a> &amp;, <a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a> const &amp;=0, <a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a> const &amp;=0)</td></tr>
-<tr class="separator:afb30493a85b6d9a360945caebc6918de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e46eca9be2cc59680d9ef47e5822ebc"><td class="memItemLeft" align="right" valign="top"><a id="a3e46eca9be2cc59680d9ef47e5822ebc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ledger</b> (<a class="el" href="classrai_1_1block__store.html">rai::block_store</a> &amp;, <a class="el" href="classrai_1_1stat.html">rai::stat</a> &amp;)</td></tr>
+<tr class="separator:a3e46eca9be2cc59680d9ef47e5822ebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ca4fcc2911dc804c836af3cf1fb50c9"><td class="memItemLeft" align="right" valign="top"><a id="a2ca4fcc2911dc804c836af3cf1fb50c9"></a>
 std::pair&lt; rai::uint128_t, std::shared_ptr&lt; <a class="el" href="classrai_1_1block.html">rai::block</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>winner</b> (MDB_txn *, <a class="el" href="classrai_1_1votes.html">rai::votes</a> const &amp;votes_a)</td></tr>
 <tr class="separator:a2ca4fcc2911dc804c836af3cf1fb50c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,12 +158,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>checksum_update</b> (
 <tr class="memitem:ac29206726826f6c96cde2b9aefa2f56e"><td class="memItemLeft" align="right" valign="top"><a id="ac29206726826f6c96cde2b9aefa2f56e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>dump_account_chain</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;)</td></tr>
 <tr class="separator:ac29206726826f6c96cde2b9aefa2f56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98e21e136a2c76397a987062b9990eed"><td class="memItemLeft" align="right" valign="top"><a id="a98e21e136a2c76397a987062b9990eed"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>state_block_parsing_enabled</b> (MDB_txn *)</td></tr>
-<tr class="separator:a98e21e136a2c76397a987062b9990eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa68b761a2eb64b5da6ba839e84b9bac3"><td class="memItemLeft" align="right" valign="top"><a id="aa68b761a2eb64b5da6ba839e84b9bac3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>state_block_generation_enabled</b> (MDB_txn *)</td></tr>
-<tr class="separator:aa68b761a2eb64b5da6ba839e84b9bac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -182,12 +176,6 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>bootstrap_weight_
 <tr class="memitem:a0111cf8a299cd9646514e12092be3e20"><td class="memItemLeft" align="right" valign="top"><a id="a0111cf8a299cd9646514e12092be3e20"></a>
 std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>check_bootstrap_weights</b></td></tr>
 <tr class="separator:a0111cf8a299cd9646514e12092be3e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4891f26d49566794bd4fb5055744ea8"><td class="memItemLeft" align="right" valign="top"><a id="ae4891f26d49566794bd4fb5055744ea8"></a>
-<a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a>&#160;</td><td class="memItemRight" valign="bottom"><b>state_block_parse_canary</b></td></tr>
-<tr class="separator:ae4891f26d49566794bd4fb5055744ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72f6199aaddcacb1fd0a5f6c23f360fb"><td class="memItemLeft" align="right" valign="top"><a id="a72f6199aaddcacb1fd0a5f6c23f360fb"></a>
-<a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a>&#160;</td><td class="memItemRight" valign="bottom"><b>state_block_generate_canary</b></td></tr>
-<tr class="separator:a72f6199aaddcacb1fd0a5f6c23f360fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>

@@ -150,27 +150,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_async</b> (st
 <tr class="memitem:a5cb0c08e667e5725da830c2350bc6b7f"><td class="memItemLeft" align="right" valign="top"><a id="a5cb0c08e667e5725da830c2350bc6b7f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>send_async</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;, <a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;, rai::uint128_t const &amp;, std::function&lt; void(std::shared_ptr&lt; <a class="el" href="classrai_1_1block.html">rai::block</a> &gt;)&gt; const &amp;, bool=true, boost::optional&lt; std::string &gt;={})</td></tr>
 <tr class="separator:a5cb0c08e667e5725da830c2350bc6b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a198addc51d0563a4f895a9b2c86963e6"><td class="memItemLeft" align="right" valign="top"><a id="a198addc51d0563a4f895a9b2c86963e6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>work_generate</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;, <a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a> const &amp;)</td></tr>
-<tr class="separator:a198addc51d0563a4f895a9b2c86963e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9844da59fb18297ea85761f2811194ee"><td class="memItemLeft" align="right" valign="top"><a id="a9844da59fb18297ea85761f2811194ee"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>work_apply</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;, std::function&lt; void(uint64_t)&gt;)</td></tr>
+<tr class="separator:a9844da59fb18297ea85761f2811194ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9a2fef7f94053dd10cc64dcc28f0fe"><td class="memItemLeft" align="right" valign="top"><a id="a3a9a2fef7f94053dd10cc64dcc28f0fe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>work_cache_blocking</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;, <a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a> const &amp;)</td></tr>
+<tr class="separator:a3a9a2fef7f94053dd10cc64dcc28f0fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa355acd9d9bc75db05b7ae998aacd48"><td class="memItemLeft" align="right" valign="top"><a id="aaa355acd9d9bc75db05b7ae998aacd48"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>work_update</b> (MDB_txn *, <a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;, <a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a> const &amp;, uint64_t)</td></tr>
 <tr class="separator:aaa355acd9d9bc75db05b7ae998aacd48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab46846cb981fa2add73d0334369b840d"><td class="memItemLeft" align="right" valign="top"><a id="ab46846cb981fa2add73d0334369b840d"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>work_fetch</b> (MDB_txn *, <a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;, <a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a> const &amp;)</td></tr>
-<tr class="separator:ab46846cb981fa2add73d0334369b840d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74a64b6cb28bf2270cf97637340b8807"><td class="memItemLeft" align="right" valign="top"><a id="a74a64b6cb28bf2270cf97637340b8807"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>work_ensure</b> (MDB_txn *, <a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;)</td></tr>
-<tr class="separator:a74a64b6cb28bf2270cf97637340b8807"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86c50bd2459d7a72891066bf8897ddb9"><td class="memItemLeft" align="right" valign="top"><a id="a86c50bd2459d7a72891066bf8897ddb9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>work_ensure</b> (<a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;, <a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a> const &amp;)</td></tr>
+<tr class="separator:a86c50bd2459d7a72891066bf8897ddb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff5c472bda679bcd88aab160e2ff5ece"><td class="memItemLeft" align="right" valign="top"><a id="aff5c472bda679bcd88aab160e2ff5ece"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>search_pending</b> ()</td></tr>
 <tr class="separator:aff5c472bda679bcd88aab160e2ff5ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca78141fdd465042dbc4d689eb50ed0b"><td class="memItemLeft" align="right" valign="top"><a id="aca78141fdd465042dbc4d689eb50ed0b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init_free_accounts</b> (MDB_txn *)</td></tr>
 <tr class="separator:aca78141fdd465042dbc4d689eb50ed0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a463e1be4ba92597f0f0bf01e8ff4a017"><td class="memItemLeft" align="right" valign="top"><a id="a463e1be4ba92597f0f0bf01e8ff4a017"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>should_generate_state_block</b> (MDB_txn *, <a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a> const &amp;)</td></tr>
-<tr class="separator:a463e1be4ba92597f0f0bf01e8ff4a017"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f652ff85ae8aff1c65f4ee9943131b6"><td class="memItemLeft" align="right" valign="top"><a id="a5f652ff85ae8aff1c65f4ee9943131b6"></a>
 <a class="el" href="unionrai_1_1uint256__union.html">rai::public_key</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrai_1_1wallet.html#a5f652ff85ae8aff1c65f4ee9943131b6">change_seed</a> (MDB_txn *transaction_a, <a class="el" href="classrai_1_1raw__key.html">rai::raw_key</a> const &amp;prv_a)</td></tr>
 <tr class="memdesc:a5f652ff85ae8aff1c65f4ee9943131b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the wallet seed and returns the first account. <br /></td></tr>

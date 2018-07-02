@@ -133,9 +133,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>frontier_put</b> (MDB
 <tr class="memitem:a535dd6f420395f8fdc7f5c4eb5ddab4c"><td class="memItemLeft" align="right" valign="top"><a id="a535dd6f420395f8fdc7f5c4eb5ddab4c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>frontier_del</b> (MDB_txn *, <a class="el" href="unionrai_1_1uint256__union.html">rai::block_hash</a> const &amp;)</td></tr>
 <tr class="separator:a535dd6f420395f8fdc7f5c4eb5ddab4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d3c6f2eab711ff19603db262b5a8cef"><td class="memItemLeft" align="right" valign="top"><a id="a6d3c6f2eab711ff19603db262b5a8cef"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>frontier_count</b> (MDB_txn *)</td></tr>
-<tr class="separator:a6d3c6f2eab711ff19603db262b5a8cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfdc7dcfd15fb325ebfc021ca6e7fd1a"><td class="memItemLeft" align="right" valign="top"><a id="acfdc7dcfd15fb325ebfc021ca6e7fd1a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>account_put</b> (MDB_txn *, <a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;, <a class="el" href="classrai_1_1account__info.html">rai::account_info</a> const &amp;)</td></tr>
 <tr class="separator:acfdc7dcfd15fb325ebfc021ca6e7fd1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,6 +145,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>account_del</b> (MDB_
 <tr class="memitem:ae7669cbdea965d011734ca946d2559eb"><td class="memItemLeft" align="right" valign="top"><a id="ae7669cbdea965d011734ca946d2559eb"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>account_exists</b> (MDB_txn *, <a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;)</td></tr>
 <tr class="separator:ae7669cbdea965d011734ca946d2559eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50daad8588b94282fe5e94c674450a63"><td class="memItemLeft" align="right" valign="top"><a id="a50daad8588b94282fe5e94c674450a63"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>account_count</b> (MDB_txn *)</td></tr>
+<tr class="separator:a50daad8588b94282fe5e94c674450a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f47c0f1854f77a87bd981355d0802c7"><td class="memItemLeft" align="right" valign="top"><a id="a6f47c0f1854f77a87bd981355d0802c7"></a>
 <a class="el" href="classrai_1_1store__iterator.html">rai::store_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>latest_begin</b> (MDB_txn *, <a class="el" href="unionrai_1_1uint256__union.html">rai::account</a> const &amp;)</td></tr>
 <tr class="separator:a6f47c0f1854f77a87bd981355d0802c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -310,6 +310,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>upgrade_v9_to_v10</b>
 <tr class="memitem:a32566813f691c702bbac3e5808fe63d5"><td class="memItemLeft" align="right" valign="top"><a id="a32566813f691c702bbac3e5808fe63d5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>upgrade_v10_to_v11</b> (MDB_txn *)</td></tr>
 <tr class="separator:a32566813f691c702bbac3e5808fe63d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a256be58b026ed386ecbfeb54928cb9f1"><td class="memItemLeft" align="right" valign="top"><a id="a256be58b026ed386ecbfeb54928cb9f1"></a>
+<a class="el" href="classrai_1_1raw__key.html">rai::raw_key</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_node_id</b> (MDB_txn *)</td></tr>
+<tr class="separator:a256be58b026ed386ecbfeb54928cb9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24fbfcdb1ccc8d6a148bdd2efc06edd2"><td class="memItemLeft" align="right" valign="top"><a id="a24fbfcdb1ccc8d6a148bdd2efc06edd2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrai_1_1block__store.html#a24fbfcdb1ccc8d6a148bdd2efc06edd2">delete_node_id</a> (MDB_txn *)</td></tr>
+<tr class="memdesc:a24fbfcdb1ccc8d6a148bdd2efc06edd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the node ID from the store. <br /></td></tr>
+<tr class="separator:a24fbfcdb1ccc8d6a148bdd2efc06edd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94193da15df4cc8d13197c72bf83e2a3"><td class="memItemLeft" align="right" valign="top"><a id="a94193da15df4cc8d13197c72bf83e2a3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> (MDB_dbi)</td></tr>
 <tr class="separator:a94193da15df4cc8d13197c72bf83e2a3"><td class="memSeparator" colspan="2">&#160;</td></tr>

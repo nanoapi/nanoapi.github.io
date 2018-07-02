@@ -15,11 +15,13 @@ var searchData=
   ['server_5fdh_5fpath',['server_dh_path',['../classrai_1_1rpc__secure__config.html#aad3c40a606ce9f1a366ce4a16f96bdb2',1,'rai::rpc_secure_config']]],
   ['server_5fkey_5fpassphrase',['server_key_passphrase',['../classrai_1_1rpc__secure__config.html#ad231bf7a8a9bb3c319e7e35c668e35b0',1,'rai::rpc_secure_config']]],
   ['server_5fkey_5fpath',['server_key_path',['../classrai_1_1rpc__secure__config.html#aea7ca8d3bb8a3ba02d133ccf10218932',1,'rai::rpc_secure_config']]],
+  ['session',['session',['../classsession.html',1,'']]],
   ['set_5fcurrent_5fend',['set_current_end',['../classrai_1_1bulk__pull__server.html#aadb465d85842a9b55b50553b51be0549',1,'rai::bulk_pull_server']]],
   ['set_5fparams',['set_params',['../classrai_1_1bulk__pull__blocks__server.html#aa586f89233f77d5ab1a060d14a0af13a',1,'rai::bulk_pull_blocks_server']]],
   ['settings',['settings',['../classrai__qt_1_1settings.html',1,'rai_qt']]],
   ['shared_5fptr_5fblock_5fhash',['shared_ptr_block_hash',['../classrai_1_1shared__ptr__block__hash.html',1,'rai']]],
-  ['socket_5ftimeout',['socket_timeout',['../classrai_1_1socket__timeout.html',1,'rai']]],
+  ['socket',['socket',['../classrai_1_1socket.html',1,'rai']]],
+  ['socket_5ftransport',['socket_transport',['../classsocket__transport.html',1,'']]],
   ['ssl_5fcontext',['ssl_context',['../classrai_1_1rpc__secure.html#ad5bde477b4fcd2972231d4a91b55fe9d',1,'rai::rpc_secure']]],
   ['stat',['stat',['../classrai_1_1stat.html',1,'rai::stat'],['../classrai_1_1stat.html#a477b99f0b6ff40ba56775929c6a99ca0',1,'rai::stat::stat()'],['../classrai_1_1stat.html#a6f170d53cfc3c96f374121bb5e124189',1,'rai::stat::stat(rai::stat_config config)']]],
   ['stat_5fconfig',['stat_config',['../classrai_1_1stat__config.html',1,'rai']]],
@@ -33,5 +35,6 @@ var searchData=
   ['status',['status',['../classrai__qt_1_1status.html',1,'rai_qt']]],
   ['store_5fentry',['store_entry',['../classrai_1_1store__entry.html',1,'rai']]],
   ['store_5fiterator',['store_iterator',['../classrai_1_1store__iterator.html',1,'rai']]],
+  ['syn_5fcookie_5finfo',['syn_cookie_info',['../classrai_1_1syn__cookie__info.html',1,'rai']]],
   ['system',['system',['../classrai_1_1system.html',1,'rai']]]
 ];

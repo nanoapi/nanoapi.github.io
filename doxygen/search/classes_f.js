@@ -2,6 +2,7 @@ var searchData=
 [
   ['payment_5fobserver',['payment_observer',['../classrai_1_1payment__observer.html',1,'rai']]],
   ['peer_5fattempt',['peer_attempt',['../classrai_1_1peer__attempt.html',1,'rai']]],
+  ['peer_5fby_5fip_5faddr',['peer_by_ip_addr',['../classrai_1_1peer__by__ip__addr.html',1,'rai']]],
   ['peer_5fcontainer',['peer_container',['../classrai_1_1peer__container.html',1,'rai']]],
   ['peer_5finformation',['peer_information',['../classrai_1_1peer__information.html',1,'rai']]],
   ['pending_5finfo',['pending_info',['../classrai_1_1pending__info.html',1,'rai']]],

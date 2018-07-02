@@ -107,7 +107,7 @@
                 <a href="PROTOCOL.html">
             
                     
-                    Message Protocol
+                    Request/Response Protocol
             
                 </a>
             
@@ -134,6 +134,32 @@
             
                     
                     Node Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="DOC.html">
+            
+                <a href="DOC.html">
+            
+                    
+                    Generated Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="TUTORIAL.html">
+            
+                <a href="TUTORIAL.html">
+            
+                    
+                    Tutorial for adding new messages
             
                 </a>
             
@@ -193,11 +219,11 @@
 <li><code>api.cpp</code> implements the API messages. This can be broken into multiple files as the API grows.</li>
 <li>The <code>protobuf</code> directory contains the protobuf definitions. Whenever these are changed, the corresponding C++ files are generated when the project is built. The generated files ends up in the api-c directory. These files
 should not be checked in.</li>
-<li><code>std::expected</code> and <code>std::error_code</code> is used for error handling. These are mapped to protobuf error responses. This means error codes and messages are consistent across clients, as well as the node.</li>
+<li><code>std::expected</code> and <code>std::error_code</code> is used for error handling. These are mapped to protobuf error responses. This means error codes and messages are consistent across clients, as well as the node. Error codes are forever; do not change or reuse these.</li>
 </ul>
 <h1 id="expanding-the-api">Expanding the API</h1>
 <p><strong>Step 1:</strong> Define the request and response messages in one of the existing <code>.proto</code> files in the protobuf directory, or create a new proto file (a large number of proto files is preferred over a few large ones)</p>
-<p>If you add new proto-files, make sure you add the corresponding source files to the <code>rai_protobuf</code> library in <code>CMakeLists.txt</code></p>
+<p>If you add new .proto files, make sure you add the corresponding source files to the <code>rai_protobuf</code> library in <code>CMakeLists.txt</code></p>
 <p><strong>Step 2:</strong> Implement the message in <code>api.cpp</code>. Add new error codes as necessary along with a descriptive error message.</p>
 <p>Existing clients <strong>do not</strong> need to be updated unless breaking changes are made. See Versioning below.</p>
 <h1 id="building">Building</h1>
@@ -206,22 +232,22 @@ should not be checked in.</li>
 <p>Build as usual.</p>
 <p>Protobuf is distributed as a submodule, just like cryptopp and lmdb. This is a reliable way to include protobuf on all operating systems using CMake (an alternative is using Hunter or Conan, which the node is currently not using, while FindProtobuf is too flakey to use)</p>
 <h1 id="versioning">Versioning</h1>
-<p>Protocol Buffers is a pretty lenient encoding, and many changes can be made without breaking old clients. Please see the <a href="https://developers.google.com/protocol-buffers/docs/proto3#updating" target="_blank">protobuf docs</a> regarding rules for adding, changing and removing fields.</p>
-<p>The <code>core</code> protobuf definition contains API <em>major</em> and <em>minor</em> version numbers. These are written as part of the preamble in every request and response.</p>
+<p>Protocol Buffers is a lenient encoding, and many changes can be made without breaking old clients. Please see the <a href="https://developers.google.com/protocol-buffers/docs/proto3#updating" target="_blank">protobuf docs</a> regarding rules for adding, changing and removing fields.</p>
+<p>The <code>core</code> protobuf definition contains API <em>major</em> and <em>minor</em> version numbers. These are written as part of the preamble.</p>
 <p>The rules are as follows:</p>
 <ul>
-<li>If the major version is bumped, the API contains breaking changes. Breaking changes MUST be documented in the protocol definition.</li>
-<li>If the minor version is bumped, the API contain non-breaking changes. New message types may be added, and fields may be added to existing messages.</li>
+<li>If the major version is bumped, the API has breaking changes. Breaking changes MUST be documented in the protocol definition and Node <strong>release notes</strong>.</li>
+<li>If the minor version is bumped, the API has non-breaking changes. New message types may be added, and fields may be added to existing messages.</li>
 </ul>
-<p>The API versions are NOT bumped if the node makes backwards compatible bugfixes. Thus, there is no need for a patch version. If a bugfix breaks existing clients, the major version must be bumped.</p>
-<p>Since the node knows the version of the client, it can adapt the implementation accordingly rather than bumping the major version. For instance, &quot;account_pending&quot; can be coded to behave differently if the client version is &gt;= 1.2.</p>
+<p>The versions numbers are <em>not</em> bumped if the node makes backwards compatible bugfixes. Thus, there is no need for a patch version. <strong>If a bugfix breaks existing clients, the major version must be bumped.</strong></p>
+<p>Since the node knows the version of the client, it can sometimes adapt the implementation accordingly rather than bumping the major version, i.e. old clients gets the old behavior.</p>
 <h1 id="message-variations">Message variations</h1>
-<p>Let&apos;s say a complete rewrite of the <code>req_account_history</code> message is required, with many new and changed query parameters and additional response fields.</p>
-<p>Instead of making a very flexible message, but with complicated semantics, consider making one or more <code>req_account_history_&lt;postfix&gt;</code> messages, with a descriptive postfix.</p>
+<p>Let&apos;s say a complete rewrite of the <code>req_account_pending</code> message is required, with many new and changed query parameters and additional response fields.</p>
+<p>Instead of making a flexible and large message definition, consider making one or more specific <code>req_account_pending_&lt;postfix&gt;</code> messages, with a descriptive postfix.</p>
 <h1 id="updating-clients">Updating clients</h1>
-<p>Every client has a <code>ci\protobuf-gen.sh</code> script which grabs the latest protobuf files from the Node repository and generates new language specific files. </p>
+<p>Every client has a <code>ci/protobuf-gen.sh</code> script which grabs the latest protobuf files from the Node repository and generates new language specific files. </p>
 <p>Additional steps might be necessary (such as rebuilding for C/C++) - see the respective repository.</p>
-<p>No kind of API maintenance is required, as there&apos;s just a single generic &quot;request&quot; function.</p>
+<p>If you want to work on multiple clients at once, consider using the <a href="https://github.com/nanoapi/meta" target="_blank">meta</a> repository which enables script- and git commands to be executed across repositories.</p>
 
                                 
                                 </section>
@@ -249,7 +275,7 @@ should not be checked in.</li>
 
             
                 
-                <a href="PROTOCOL.html" class="navigation navigation-prev " aria-label="Previous page: Message Protocol">
+                <a href="PROTOCOL.html" class="navigation navigation-prev " aria-label="Previous page: Request/Response Protocol">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -265,7 +291,7 @@ should not be checked in.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Node API Implementation","level":"1.3","depth":1,"next":{"title":"Node Configuration","level":"1.4","depth":1,"path":"NODECONFIG.md","ref":"NODECONFIG.md","articles":[]},"previous":{"title":"Message Protocol","level":"1.2","depth":1,"path":"PROTOCOL.md","ref":"PROTOCOL.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"NODE.md","mtime":"2018-07-01T22:41:08.332Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-01T23:56:10.752Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Node API Implementation","level":"1.3","depth":1,"next":{"title":"Node Configuration","level":"1.4","depth":1,"path":"NODECONFIG.md","ref":"NODECONFIG.md","articles":[]},"previous":{"title":"Request/Response Protocol","level":"1.2","depth":1,"path":"PROTOCOL.md","ref":"PROTOCOL.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"NODE.md","mtime":"2018-07-06T12:00:43.990Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-09T01:12:49.470Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
