@@ -191,10 +191,6 @@
                 </li>
               
                 <li>
-                  <a href="#nano.api.req_client_connect"><span class="badge">M</span>req_client_connect</a>
-                </li>
-              
-                <li>
                   <a href="#nano.api.req_ping"><span class="badge">M</span>req_ping</a>
                 </li>
               
@@ -207,10 +203,6 @@
                 </li>
               
                 <li>
-                  <a href="#nano.api.res_client_connect"><span class="badge">M</span>res_client_connect</a>
-                </li>
-              
-                <li>
                   <a href="#nano.api.res_ping"><span class="badge">M</span>res_ping</a>
                 </li>
               
@@ -218,6 +210,10 @@
                   <a href="#nano.api.response"><span class="badge">M</span>response</a>
                 </li>
               
+              
+                <li>
+                  <a href="#nano.api.APIVersion"><span class="badge">E</span>APIVersion</a>
+                </li>
               
                 <li>
                   <a href="#nano.api.RequestType"><span class="badge">E</span>RequestType</a>
@@ -351,29 +347,6 @@
 
         
       
-        <h3 id="nano.api.req_client_connect">req_client_connect</h3>
-        <p>Establish a session with the node. This is optional if the node doesn't check api keys.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>api_key</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>API key. The node may be configured to require this. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
-      
         <h3 id="nano.api.req_ping">req_ping</h3>
         <p>Send ping to the node</p>
 
@@ -443,29 +416,6 @@
 
         
       
-        <h3 id="nano.api.res_client_connect">res_client_connect</h3>
-        <p>Connect response</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>api_key_accepted</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
-      
         <h3 id="nano.api.res_ping">res_ping</h3>
         <p>Ping response</p>
 
@@ -503,7 +453,7 @@
                   <td>type</td>
                   <td><a href="#nano.api.RequestType">RequestType</a></td>
                   <td></td>
-                  <td><p>For which request type is this a response? This flag allows future support for clients 
+                  <td><p>For which request type is this a response? This flag allows future support for clients
 issuing multiple concurrent requests, as well as callback messages.
 
 This may not be set if error_code is non-zero. </p></td>
@@ -539,6 +489,35 @@ may contain a more specific, system depended error code. </p></td>
       
 
       
+        <h3 id="nano.api.APIVersion">APIVersion</h3>
+        <p>API versions. proto3 doesn't have constants, so we use an enum</p><p>which allows aliases. VERSION_INVALID is a 0-value placeholder, which</p><p>protobuf requires.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>VERSION_INVALID</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>VERSION_MAJOR</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>VERSION_MINOR</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
         <h3 id="nano.api.RequestType">RequestType</h3>
         <p>The request type enum values must NOT change. The name of the enum must match</p><p>the request message name, uppercased, and without the req_ prefix. This naming</p><p>standard facilitates dynamic lookup and generic frameworks.</p>
         <table class="enum-table">
@@ -548,7 +527,7 @@ may contain a more specific, system depended error code. </p></td>
           <tbody>
             
               <tr>
-                <td>UNKOWN</td>
+                <td>INVALID</td>
                 <td>0</td>
                 <td><p></p></td>
               </tr>
@@ -562,7 +541,7 @@ may contain a more specific, system depended error code. </p></td>
               <tr>
                 <td>PING</td>
                 <td>2</td>
-                <td><p></p></td>
+                <td><p>core.proto message types</p></td>
               </tr>
             
               <tr>
@@ -581,6 +560,12 @@ may contain a more specific, system depended error code. </p></td>
                 <td>ACCOUNT_PENDING</td>
                 <td>5</td>
                 <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ADDRESS_VALID</td>
+                <td>1000</td>
+                <td><p>util.proto message types</p></td>
               </tr>
             
           </tbody>
